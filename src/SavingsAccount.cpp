@@ -2,7 +2,8 @@
 using namespace std;
 
 SavingsAccount::SavingsAccount(int accNo, string name, double bal, double rate)
-    : Account(accNo, name, bal), interestRate(rate) {}
+    : Account(accNo, name, bal), interestRate(rate) {
+}
 
 void SavingsAccount::addInterest() {
     balance += balance * interestRate;

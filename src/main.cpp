@@ -2,14 +2,13 @@
 #include "../include/SavingsAccount.h"
 #include "../include/CheckingAccount.h"
 #include <iostream>
-#include <memory>
 using namespace std;
 
 int main() {
     Bank bank;
 
-    auto acc1 = make_shared<SavingsAccount>(101, "Sai", 5000, 0.03);
-    auto acc2 = make_shared<CheckingAccount>(102, "Ram", 3000, 1000);
+    SavingsAccount* acc1 = new SavingsAccount(101, "Sai", 5000, 0.03);
+    CheckingAccount* acc2 = new CheckingAccount(102, "Ram", 3000, 1000);
 
     bank.addAccount(acc1);
     bank.addAccount(acc2);
@@ -17,7 +16,7 @@ int main() {
     int choice;
     do {
         cout << "\n--- SmartBank Menu ---\n";
-        cout << "1. Display Accounts\n2. Deposit\n3. Withdraw\n4. Transactions\n0. Exit\nChoice: ";
+        cout << "1. Display Accounts\n2. Deposit\n3. Withdraw\n4. Transactions\n5. Add Interest to Savings\n0. Exit\nChoice: ";
         cin >> choice;
 
         if (choice == 1) {
@@ -34,6 +33,9 @@ int main() {
             bank.withdraw(acc, amt);
         } else if (choice == 4) {
             bank.showTransactions();
+        } else if (choice == 5) {
+            bank.addInterestToSavings();
+            cout << "Interest added to all savings accounts!" << endl;
         }
     } while (choice != 0);
 
